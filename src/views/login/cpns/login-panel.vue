@@ -22,7 +22,7 @@
     <!--记住密码和忘记密码-->
     <div class="account-control">
       <el-checkbox v-model="isKeepPassword">记住密码</el-checkbox>
-      <el-link type="primary">忘记密码</el-link>
+      <el-link type="primary" @click="delete">忘记密码</el-link>
     </div>
     <!--登录-->
     <el-button type="primary" class="login-btn" @click="handleLoginClick"
@@ -36,6 +36,7 @@
 import { defineComponent, ref } from 'vue'
 import LoginAccount from './login-account.vue'
 import LoginPhone from './login-phone.vue'
+import localCache from '@/utils/cache'
 //登录面板
 //InstanceType实例类型
 export default defineComponent({
@@ -65,6 +66,11 @@ export default defineComponent({
         // console.log(accountRef.value?.loginAction(isKeepPassword.value))
       } else if (currentTab.value === 'phone') {
         console.log('执行loginPhone里的方法')
+      }
+      
+      const delete = () => {
+        localCache.delete('name')
+        localCahce.delete('password')
       }
     }
 
