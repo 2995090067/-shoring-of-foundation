@@ -20,38 +20,11 @@ import './assets/css/index.less'
 import { setupStore } from './store'
 
 const app = createApp(App)
-app.use(router)
+
 app.use(store)
 // app.use(Elementplus)
 app.use(globalRegister)
 app.use(setupStore)
-app.mount('#app')
+app.use(router)
 
-// interface DataType {
-//   data: any
-//   returnCode: string
-//   success: boolean
-// }
-//
-// zyRequest
-//   .request<DataType>({
-//     url: '/home/multidata',
-//     method: 'GET',
-//     showloading: true
-//   })
-//   .then((res) => {
-//     console.log(1111)
-//     // ,防止
-//     console.log('成功！！！', res.data)
-//   })
-// zyRequest
-//   .get<DataType>({
-//     url: '/home/multidata/404',
-//     showloading: false
-//   })
-//   .then((res) => {
-//     console.log(res.data)
-//     console.log(res.returnCode)
-//     console.log(res.success)
-//   })
-//   .catch((err) => err)
+app.mount('#app')
